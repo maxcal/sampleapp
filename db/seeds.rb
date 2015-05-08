@@ -5,3 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+users = (1..50).map { User.create!(name: Faker::Name.name ) }
+
+50.times do
+  Comment.create!(
+      user: users.sample,
+      description: Faker::Lorem.paragraph
+  )
+end
