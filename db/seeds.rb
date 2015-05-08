@@ -7,6 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 store = Store.find_or_create_by(name: 'The Corner Shop')
+store2 = Store.find_or_create_by(name: 'The Corner Shop')
+
+
 
 fantasy = Category.find_or_create_by(name: 'fantasy')
 romance = Category.find_or_create_by(name: 'fantasy')
@@ -17,3 +20,17 @@ store.books.create_with(categories: [fantasy, classics]).find_or_create_by(title
 store.books.create_with(categories: [romance, classics]).find_or_create_by(title: 'Gone With The Wind')
 store.books.create_with(categories: [mystery, classics]).find_or_create_by(title: 'A Study in Scarlet')
 store.books.create_with(categories: [mystery]).find_or_create_by(title: 'The Sound of Glass')
+
+
+categories = Category.all
+stores = Store.all
+
+500.times do |i|
+  puts "Creating book #{i}/500 ..."
+
+  stores.sample.books.create!(
+    categories: categories.sample((1..categories.size).to_a.sample),
+    title: "Sample book #{i}"
+  )
+  puts
+end
