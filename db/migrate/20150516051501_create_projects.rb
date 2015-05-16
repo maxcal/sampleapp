@@ -1,7 +1,9 @@
 class CreateProjects < ActiveRecord::Migration
   def change
     create_table :projects do |t|
-      t.references :team, index: true
+      t.string :email
+      t.string :team_name
+      t.string :team_leader
       t.references :project_type, index: true
       t.timestamps
     end

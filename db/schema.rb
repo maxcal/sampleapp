@@ -21,20 +21,14 @@ ActiveRecord::Schema.define(version: 20150516051501) do
   end
 
   create_table "projects", force: true do |t|
-    t.integer  "team_id"
+    t.string   "email"
+    t.string   "team_name"
+    t.string   "team_leader"
     t.integer  "project_type_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "projects", ["project_type_id"], name: "index_projects_on_project_type_id"
-  add_index "projects", ["team_id"], name: "index_projects_on_team_id"
-
-  create_table "teams", force: true do |t|
-    t.string   "name"
-    t.string   "leader"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
 end
