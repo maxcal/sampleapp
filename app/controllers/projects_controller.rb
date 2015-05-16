@@ -21,6 +21,9 @@ class ProjectsController < ApplicationController
     @projects = Project.all
   end
 
+  private
+
+  # we need to whitelist parameters to tell rails its ok to use them
   def project_params
     params.require(:project).permit(:email, :project_type_id, :team_name, :leader)
   end
