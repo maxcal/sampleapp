@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
            if: :validate_password?, on: :update
 
   def current_password_is_correct
-    unless authenticate(current_password)
+    # For some stupid reason authenticate always returns false when called on self
+    if User.find(id).authenticate(current_password) == false
       errors.add(:current_password, "is incorrect.")
     end
   end
