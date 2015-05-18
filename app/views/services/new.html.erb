@@ -1,0 +1,9 @@
+<h1>Add services to <%= @service.shop.name %></h1>
+
+<%= form_for([@service.shop, @service]) do |f| %>
+  <div>
+    <%= f.label :category %>
+    <%= f.text_field :category %>
+  </div>
+  <%= f.submit %>
+<% end %>
