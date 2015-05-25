@@ -5,3 +5,18 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+i = Item.create(
+    name: 'foo',
+    steps_attributes: [
+        {
+            name: 'bar',
+            messages_attributes: [
+              body: 'Hello world'
+            ]
+        }
+    ]
+)
+
+puts i.inspect
